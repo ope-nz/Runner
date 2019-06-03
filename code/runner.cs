@@ -26,6 +26,16 @@ namespace B4JRunner
 			{
 				JavaFolder = "..\\runtime\\java";
 			}	
+			
+			if(Directory.Exists(@"C:\Java"))
+			{
+				string [] subDirectories = System.IO.Directory.GetDirectories(@"C:\Java","*jdk*");
+				if (subDirectories.Length > 0)
+				{	
+					string firstSubDir = subDirectories[0];
+					JavaFolder = firstSubDir;
+				}				
+			}
 
 			if (JavaFolder == "")
 			{

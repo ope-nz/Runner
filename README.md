@@ -10,7 +10,15 @@ For example;
 
 This way you can have one executable that you can rename to target multiple JAR files.
 
-The pre-compiled exe is in the out folder.
+The arguments passed are;
+
+RuntimeFolder\bin\javaw.exe --module-path RuntimeFolder\javafx\lib --add-modules javafx.controls,javafx.fxml -jar JarName
+
+Where;
+- RuntimeFolder is the runtime folder in the same directory as the executable.
+- JarName is the executable file name with .exe rplaced with .jar
+
+A pre-compiled exe is in the "out" folder.
 
 If you want to build your own Runner or change the icon there is a Windows batch file to build the C# code for you (download the project).
 

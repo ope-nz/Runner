@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
 
+// NOTE: console output only shows if you run with | more option at cmd. eg runner.exe | more
 namespace B4JRunner
 {
     class Program
@@ -16,6 +17,8 @@ namespace B4JRunner
 			string ThisLocation = Directory.GetCurrentDirectory();
 			
 			string JavaFolder = "";
+			
+			Console.WriteLine(ThisLocation);
 			
 			if(Directory.Exists(".\\runtime"))
 			{
@@ -36,17 +39,25 @@ namespace B4JRunner
 					JavaFolder = firstSubDir;
 				}				
 			}
+			
+			Console.WriteLine(JavaFolder);
 
 			if (JavaFolder == "")
 			{
 				MessageBox.Show("Cant find runtime folder, exiting!");
 				Environment.Exit(-1);
 			}
+			
+			
+			//string Arguments = "--module-path " + JavaFolder +  "\\javafx\\lib --add-modules javafx.controls,javafx.fxml -jar " + JarName;
+			string Arguments = "--module-path " + JavaFolder +  "\\javafx\\lib --add-modules ALL-MODULE-PATH -jar " + JarName;
+			
+			Console.WriteLine(Arguments);
 				
             Process p = new Process();
             p.StartInfo.FileName = JavaFolder + "\\bin\\javaw.exe";
             p.StartInfo.WorkingDirectory = ThisLocation;
-            p.StartInfo.Arguments = "--module-path " + JavaFolder +  "\\javafx\\lib --add-modules javafx.controls,javafx.fxml -jar " + JarName;
+            p.StartInfo.Arguments = Arguments;			
             p.Start();
         }
     }

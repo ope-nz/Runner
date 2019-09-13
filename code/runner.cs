@@ -20,17 +20,20 @@ namespace B4JRunner
 			
 			Console.WriteLine(ThisLocation);
 			
-			if(Directory.Exists(".\\runtime"))
+			// Updated the logic below, if there is a "private" runtime folder found then this will be the prefered one over the one in the C:\Java folder
+			// This is so that the runtime bundled with the app is used before looking for others
+
+			if(JavaFolder == "" && Directory.Exists(".\\runtime"))
 			{
 				JavaFolder = ".\\runtime\\java";
 			}
 			
-			if(Directory.Exists("..\\runtime"))
+			if(JavaFolder == "" && Directory.Exists("..\\runtime"))
 			{
 				JavaFolder = "..\\runtime\\java";
 			}	
 			
-			if(Directory.Exists(@"C:\Java"))
+			if(JavaFolder == "" && Directory.Exists(@"C:\Java"))
 			{
 				string [] subDirectories = System.IO.Directory.GetDirectories(@"C:\Java","*jdk*");
 				if (subDirectories.Length > 0)

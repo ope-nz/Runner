@@ -56,6 +56,7 @@ namespace B4JRunner
 			string Arguments = &quot;--module-path &quot; + JavaFolder +  &quot;\\javafx\\lib --add-modules ALL-MODULE-PATH -jar &quot; + JarName;
 			
 			Console.WriteLine(Arguments);
+			
 				
             Process p = new Process();
             p.StartInfo.FileName = JavaFolder + &quot;\\bin\\javaw.exe&quot;;

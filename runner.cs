@@ -2,6 +2,13 @@ using System;
 using System.Diagnostics;
 //using System.Windows.Forms;
 using System.IO;
+using System.Reflection;
+
+// A few assembly level attributes.
+[assembly:AssemblyVersion(&quot;2.0.0.0&quot;)]
+[assembly:AssemblyProductAttribute(&quot;Runner&quot;)]
+[assembly:AssemblyCopyrightAttribute(&quot;ope ltd&quot;)]
+[assembly:AssemblyTitle(&quot;JAR Launcher&quot;)]
 
 // NOTE: console output only shows if you run with | more option at cmd. eg runner.exe | more
 namespace B4JRunner

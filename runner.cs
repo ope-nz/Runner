@@ -10,6 +10,7 @@ using System.Reflection;
 [assembly:AssemblyCopyrightAttribute(&quot;ope ltd&quot;)]
 [assembly:AssemblyTitle(&quot;JAR Launcher&quot;)]
 
+
 // NOTE: console output only shows if you run with | more option at cmd. eg runner.exe | more
 namespace B4JRunner
 {

@@ -17,12 +17,10 @@ namespace B4JRunner
     {
         static void Main(string[] args)
         {
-			string ExeName = System.AppDomain.CurrentDomain.FriendlyName;					
-
+			string ExeName = System.AppDomain.CurrentDomain.FriendlyName;	
 			string JarName = ExeName.Replace(".exe",".jar");
-			
 			string ThisLocation = Directory.GetCurrentDirectory();
-			
+
 			string JavaFolder = "";
 			
 			Console.WriteLine(ThisLocation);

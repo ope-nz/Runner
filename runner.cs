@@ -5,11 +5,10 @@ using System.IO;
 using System.Reflection;
 
 // A few assembly level attributes.
-[assembly:AssemblyVersion(&quot;2.0.0.0&quot;)]
-[assembly:AssemblyProductAttribute(&quot;Runner&quot;)]
-[assembly:AssemblyCopyrightAttribute(&quot;ope ltd&quot;)]
-[assembly:AssemblyTitle(&quot;JAR Launcher&quot;)]
-
+[assembly:AssemblyVersion("2.0.0.0")]
+[assembly:AssemblyProductAttribute("Runner")]
+[assembly:AssemblyCopyrightAttribute("ope ltd")]
+[assembly:AssemblyTitle("JAR Launcher")]
 
 // NOTE: console output only shows if you run with | more option at cmd. eg runner.exe | more
 namespace B4JRunner
@@ -20,31 +19,31 @@ namespace B4JRunner
         {
 			string ExeName = System.AppDomain.CurrentDomain.FriendlyName;					
 
-			string JarName = ExeName.Replace(&quot;.exe&quot;,&quot;.jar&quot;);
+			string JarName = ExeName.Replace(".exe",".jar");
 			
 			string ThisLocation = Directory.GetCurrentDirectory();
 			
-			string JavaFolder = &quot;&quot;;
+			string JavaFolder = "";
 			
 			Console.WriteLine(ThisLocation);
 			
-			// Updated the logic below, if there is a &quot;private&quot; runtime folder found then this will be the prefered one over the one in the C:\Java folder
+			// Updated the logic below, if there is a "private" runtime folder found then this will be the prefered one over the one in the C:\Java folder
 			// This is so that the runtime bundled with the app is used before looking for others
 
-			if(JavaFolder == &quot;&quot; &amp;&amp; Directory.Exists(&quot;.\\runtime&quot;))
+			if(JavaFolder == "" && Directory.Exists(".\\runtime"))
 			{
-				JavaFolder = &quot;.\\runtime\\java&quot;;
+				JavaFolder = ".\\runtime\\java";
 			}
 			
-			if(JavaFolder == &quot;&quot; &amp;&amp; Directory.Exists(&quot;..\\runtime&quot;))
+			if(JavaFolder == "" && Directory.Exists("..\\runtime"))
 			{
-				JavaFolder = &quot;..\\runtime\\java&quot;;
+				JavaFolder = "..\\runtime\\java";
 			}
 			
-			if(JavaFolder == &quot;&quot; &amp;&amp; Directory.Exists(@&quot;C:\Java&quot;))
+			if(JavaFolder == "" && Directory.Exists(@"C:\Java"))
 			{
-				string [] subDirectories = System.IO.Directory.GetDirectories(@&quot;C:\Java&quot;,&quot;*jdk*&quot;);
-				if (subDirectories.Length &gt; 0)
+				string [] subDirectories = System.IO.Directory.GetDirectories(@"C:\Java","*jdk*");
+				if (subDirectories.Length > 0)
 				{	
 					string firstSubDir = subDirectories[0];
 					JavaFolder = firstSubDir;
@@ -53,21 +52,21 @@ namespace B4JRunner
 			
 			Console.WriteLine(JavaFolder);
 
-			if (JavaFolder == &quot;&quot;)
+			if (JavaFolder == "")
 			{
-				//MessageBox.Show(&quot;Cant find runtime folder, exiting!&quot;);
-				Console.WriteLine(&quot;Cant find runtime folder, exiting!&quot;);
+				//MessageBox.Show("Cant find runtime folder, exiting!");
+				Console.WriteLine("Cant find runtime folder, exiting!");
 				Environment.Exit(-1);
 			}			
 			
-			//string Arguments = &quot;--module-path &quot; + JavaFolder +  &quot;\\javafx\\lib --add-modules javafx.controls,javafx.fxml -jar &quot; + JarName;
-			string Arguments = &quot;--module-path &quot; + JavaFolder +  &quot;\\javafx\\lib --add-modules ALL-MODULE-PATH -jar &quot; + JarName;
+			//string Arguments = "--module-path " + JavaFolder +  "\\javafx\\lib --add-modules javafx.controls,javafx.fxml -jar " + JarName;
+			string Arguments = "--module-path " + JavaFolder +  "\\javafx\\lib --add-modules ALL-MODULE-PATH -jar " + JarName;
 			
 			Console.WriteLine(Arguments);
 			
 				
             Process p = new Process();
-            p.StartInfo.FileName = JavaFolder + &quot;\\bin\\javaw.exe&quot;;
+            p.StartInfo.FileName = JavaFolder + "\\bin\\javaw.exe";
             p.StartInfo.WorkingDirectory = ThisLocation;
             p.StartInfo.Arguments = Arguments;
 			p.StartInfo.UseShellExecute = false;		

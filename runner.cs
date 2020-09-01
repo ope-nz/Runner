@@ -54,7 +54,6 @@ namespace B4JRunner
 
 			if (JavaFolder == "")
 			{
-				//MessageBox.Show("Cant find runtime folder, exiting!");
 				Console.WriteLine("Cant find runtime folder, exiting!");
 				Environment.Exit(-1);
 			}			

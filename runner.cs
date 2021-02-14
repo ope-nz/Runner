@@ -58,8 +58,7 @@ namespace B4JRunner
 			//string Arguments = "--module-path " + JavaFolder +  "\\javafx\\lib --add-modules javafx.controls,javafx.fxml -jar " + JarName;
 			string Arguments = "--module-path " + JavaFolder +  "\\javafx\\lib --add-modules ALL-MODULE-PATH -jar " + JarName;
 			
-			Console.WriteLine(Arguments);
-			
+			Console.WriteLine(Arguments);			
 				
             Process p = new Process();
             p.StartInfo.FileName = JavaFolder + "\\bin\\javaw.exe";

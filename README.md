@@ -1,7 +1,7 @@
 # Runner
 Small C# executable to run a Java JAR file using Open JDK
 
-Runner is a smallC# executable which starts the JAR using Open JDK but the executable uses its name to execute the jar in the same directory.
+Runner is a small C# executable which starts the JAR using Open JDK but the executable uses its name to execute the jar in the same directory.
 
 For example;
 
